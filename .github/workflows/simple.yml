@@ -34,9 +34,13 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - name: Run test
-        run: |
-          npm run test
-      - name: Run linting
-        run: |
-          npm run lint
+  quality:
+    - runs-on: ubuntu-latest
+    - steps:
+      - uses: nrwl/nx-set-shas@v3
+        - name: Linting
+          run: npm run lint
+        - name: Unit test
+          run: npm run test
+
+
