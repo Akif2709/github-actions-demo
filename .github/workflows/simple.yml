@@ -35,7 +35,12 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   quality:
+    runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          
       - uses: nrwl/nx-set-shas@v3
       - name: Linting
         run: npm run lint
