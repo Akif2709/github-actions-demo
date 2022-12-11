@@ -47,7 +47,6 @@ jobs:
       - name: Linting
         run: npm run lint
 
-      - uses: nrwl/nx-set-shas@v3
       - name: Unit test
         run: npm run test
 
