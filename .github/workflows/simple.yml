@@ -39,7 +39,7 @@ jobs:
         env:
           super_secret: ${{secrets.EXAMPLE_SECRET}}
         run: |
-          echo ${{GITHUB_TOKEN}}
+          echo ${{secrets.GITHUB_TOKEN}}
           echo ${{env.super_secret}}
 
   quality_gates:
