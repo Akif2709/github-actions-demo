@@ -37,17 +37,18 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - name: Install deps
-        run: npm ci
-        
+
   quality_gates:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
-          
+          fetch-depth: 0    
       - uses: nrwl/nx-set-shas@v3
+
+      - name: Install deps
+        run: npm ci
+
       - name: Linting
         run: npm run lint
 
