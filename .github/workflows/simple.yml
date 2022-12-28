@@ -86,8 +86,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # uses: akif2709/github-actions-demo/.github/workflows/workflow-1.yml@172239021f7ba04fe7327647b213799853a9eb89
-      uses: ./.github/workflows/reusable-workflow.yml
-      with:
-        echo-text: Greetings!
+      - uses: ./.github/workflows/reusable-workflow.yml
+        with:
+          echo-text: Greetings!
 
 
