@@ -22,17 +22,29 @@ jobs:
   preparation:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    # runs-on: ${{matrix.os}}
 
     env:
       GREETING: Hello
 
+    # strategy:
+    #   matrix:
+    #     version: [10, 12, 14]
+    #     os: [ubuntu-latest, windows-latest]
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+        # Example of using matrix
+        # - uses: actions/setup-node@v3
+        #   with:
+        #     node-version: ${{ matrix.version }}
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
+      - name: Echo github object
+        id: echo-github-var
         run: |
           cat << OBJECT
           ${{ toJson(github) }}
@@ -42,11 +54,13 @@ jobs:
       - name: Run a multi-line script
         env:
           SUPER_SECRET: ${{secrets.EXAMPLE_SECRET}}
+          ECHO_OUTPUT: ${{steps.echo-github-var.output}}
         run: |
           echo My Github token is ${{secrets.GITHUB_TOKEN}}
           echo My super secret is ${{env.SUPER_SECRET}}
           echo "$DAY_OF_WEEK"
           echo "$GREETING"
+          echo "$ECHO_OUTPUT"
       - name: Run only for main
         if: ${{ github.ref == 'refs/heads/main' }}
         run: echo "Deploying to production server on branch $GITHUB_REF"
@@ -67,5 +81,13 @@ jobs:
 
       - name: Unit test
         run: npm run test
+
+  call_reusable_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      # uses: akif2709/github-actions-demo/.github/workflows/workflow-1.yml@172239021f7ba04fe7327647b213799853a9eb89
+      uses: ./.github/workflows/reusable-workflow.yml
+      with:
+        echo-text: Greetings!
 
 

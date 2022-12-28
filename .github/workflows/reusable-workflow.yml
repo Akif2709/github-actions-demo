@@ -1,0 +1,15 @@
+name: Reusable workflow example
+
+on:
+  workflow_call:
+    inputs:
+      echo-text:
+        required: true
+        type: string
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo from reusable
+        run: echo "Hello from reusable workflow with input => ${{inputs.echo-text}}"
