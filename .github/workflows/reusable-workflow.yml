@@ -11,7 +11,5 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
       - name: Echo from reusable
         run: echo "Hello from reusable workflow with input => ${{inputs.echo-text}}"
