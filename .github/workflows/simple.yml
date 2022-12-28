@@ -54,13 +54,12 @@ jobs:
       - name: Run a multi-line script
         env:
           SUPER_SECRET: ${{secrets.EXAMPLE_SECRET}}
-          ECHO_OUTPUT: ${{steps.echo-github-var.output}}
         run: |
           echo My Github token is ${{secrets.GITHUB_TOKEN}}
           echo My super secret is ${{env.SUPER_SECRET}}
           echo "$DAY_OF_WEEK"
           echo "$GREETING"
-          echo "$ECHO_OUTPUT"
+          echo ${{steps.echo-github-var.output}}
       - name: Run only for main
         if: ${{ github.ref == 'refs/heads/main' }}
         run: echo "Deploying to production server on branch $GITHUB_REF"
