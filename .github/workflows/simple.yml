@@ -50,9 +50,9 @@ jobs:
           ${{ toJson(github) }}
           OBJECT
 
-      - name: Echo github object
+      - name: Echo current branch
         id: echo-github-var
-        run: echo "CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
+        run: echo "CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_OUTPUT
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
@@ -63,7 +63,7 @@ jobs:
           echo My super secret is ${{env.SUPER_SECRET}}
           echo "$DAY_OF_WEEK"
           echo "$GREETING"
-          echo ${{toJson(steps.echo-github-var.outputs.CURRENT_BRANCH)}}
+          echo ${{steps.echo-github-var.outputs.CURRENT_BRANCH}}
       - name: Run only for main
         if: ${{ github.ref == 'refs/heads/main' }}
         run: echo "Deploying to production server on branch $GITHUB_REF"
