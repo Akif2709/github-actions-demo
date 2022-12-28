@@ -74,7 +74,7 @@ jobs:
       - uses: nrwl/nx-set-shas@v3
 
       - name: Install deps
-        run: npm ci
+        run: npm install
 
       - name: Linting
         run: npm run lint
@@ -83,12 +83,9 @@ jobs:
         run: npm run test
 
   call_reusable_workflow:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      # uses: akif2709/github-actions-demo/.github/workflows/workflow-1.yml@172239021f7ba04fe7327647b213799853a9eb89
-      - uses: ./.github/workflows/reusable-workflow.yml
-        with:
-          echo-text: Greetings!
+    # uses: akif2709/github-actions-demo/.github/workflows/workflow-1.yml@172239021f7ba04fe7327647b213799853a9eb89
+    - uses: ./.github/workflows/reusable-workflow.yml
+      with:
+        echo-text: Greetings!
 
 
