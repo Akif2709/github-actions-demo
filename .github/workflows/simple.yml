@@ -44,7 +44,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Echo github object
-        id: echo-github-var
         run: |
           cat << OBJECT
           ${{ toJson(github) }}
