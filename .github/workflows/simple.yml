@@ -59,7 +59,7 @@ jobs:
           echo My super secret is ${{env.SUPER_SECRET}}
           echo "$DAY_OF_WEEK"
           echo "$GREETING"
-          echo ${{steps.echo-github-var.output}}
+          echo ${{toJson(steps.echo-github-var.output)}}
       - name: Run only for main
         if: ${{ github.ref == 'refs/heads/main' }}
         run: echo "Deploying to production server on branch $GITHUB_REF"
