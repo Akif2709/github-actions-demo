@@ -98,10 +98,10 @@ jobs:
         with:
           node-version: 16
           cache: 'npm'
+      
 
       - name: Run script
         run: node ./scripts/node-version.js
-        shell: bash
 
 
 
