@@ -19,7 +19,7 @@ env:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  preparation:
+  understand-github-actions:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     # runs-on: ${{matrix.os}}
@@ -62,7 +62,7 @@ jobs:
           echo My super secret is ${{env.SUPER_SECRET}}
           echo "$DAY_OF_WEEK"
           echo "$GREETING"
-          echo ${{steps.echo-github-var.outputs.CURRENT_BRANCH}}
+          echo Current branch is ${{steps.echo-github-var.outputs.CURRENT_BRANCH}}
       - name: Run only for main
         if: ${{ github.ref == 'refs/heads/main' }}
         run: echo "Deploying to production server on branch $GITHUB_REF"
