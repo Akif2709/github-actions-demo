@@ -91,7 +91,8 @@ jobs:
       echo-text: Greetings!
 
   run_script:
-     steps:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v3
 
       - name: Run script
