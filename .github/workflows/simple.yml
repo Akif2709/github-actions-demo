@@ -97,6 +97,7 @@ jobs:
 
       - name: Run script
         run: ./scripts/node-version.js
+        shell: bash
 
 
 
