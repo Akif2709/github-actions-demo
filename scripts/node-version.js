@@ -1,11 +1,17 @@
 #!/usr/bin/env node
 
-const shell = require('shelljs');
+const { exec } = require('node:child_process');
 
-function runScript(){
-    console.log('akif')
-    const {stdout} = shell.exec('node -v', {silent:true})
-    console.log(stdout)
+async function runScript() {
+    console.log('Logging from the "node-versions.js" script file..')
+  await exec('node -v', (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+    console.error(`stderr: ${stderr}`);
+  });
 }
 
-runScript()
+runScript();
