@@ -90,4 +90,12 @@ jobs:
     with:
       echo-text: Greetings!
 
+  run_script:
+     steps:
+      - uses: actions/checkout@v3
+
+      - name: Run script
+        run: ./scripts/node-versions
+
+
 
