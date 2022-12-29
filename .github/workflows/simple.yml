@@ -98,8 +98,6 @@ jobs:
         with:
           node-version: 16
           cache: 'npm'
-
-      - name: Install deps
       
       - name: Run script
         run: npm install
