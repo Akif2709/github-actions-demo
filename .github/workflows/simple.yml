@@ -100,7 +100,7 @@ jobs:
           cache: 'npm'
       
       - name: Run script
-      - run: node ./scripts/node-version.js
+        run: node ./scripts/node-version.js
 
 
 
