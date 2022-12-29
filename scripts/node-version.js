@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const { exec } = require('child_process');
+const shell = require('shelljs');
 
 function runScript(){
     console.log('akif')
-    const {stdout} = exec('node -v')
-    console.log(`stdout:\n${stdout}`);
+    const {stdout} = shell.exec('node -v', {silent:true})
+    console.log(stdout)
 }
 
 runScript()
