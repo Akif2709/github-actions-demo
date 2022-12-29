@@ -100,7 +100,6 @@ jobs:
           cache: 'npm'
       
       - name: Run script
-      - run: npm install
       - run: node ./scripts/node-version.js
 
 
