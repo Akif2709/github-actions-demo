@@ -1,3 +1,5 @@
+#!/bin/sh
+
 const { exec } = require('child_process');
 
 function runScript(){
